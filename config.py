@@ -42,7 +42,7 @@ DEFAULT_AVG_SESSIONS_FOR_DROPOUTS = 2.0
 DEFAULT_TIMEFRAME_OF_INTEREST_MONTHS = 12.0
 
 # Constants for overall cost explanation
-ORGANISATION_FIXED_COSTS = 136000 # Fixed R&D Budget in USD
+ORGANISATION_FIXED_COSTS = 93000 # Fixed R&D Budget in USD
 
 # Default values for cost per session calculations
 DEFAULT_COACHES_PER_COHORT = 15
@@ -72,8 +72,7 @@ programme_introductions = {
     "Procrastination": '''
         This four session programme helps people who're in the top 20% of procrastinators relative to the general population.
 
-        The only paper I could find that looked at how well a procrastination intervention's wellbeing improvement held up showed that 90% of benefits were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
-
+        
     '''
 }
 
