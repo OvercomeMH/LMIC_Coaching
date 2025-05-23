@@ -9,7 +9,7 @@ from tabs.assumptions_tab import display_assumptions_tab
 from tabs.overall_tab import display_overall_comparison_tab
 from tabs.programme_tab import display_programme_tab
 from tabs.cost_per_session_tab import display_cost_per_session_tab
-from tabs.fixed_costs_tab import display_fixed_costs_tab
+
 
 # Set the page layout to wide
 st.set_page_config(layout="wide")
@@ -34,8 +34,8 @@ st.title('CEA: Coaching LMIC natives')
 
 # Define tab names and create tabs
 programme_tab_names = list(offerings.keys())
-# New order: Intro, Programmes, Marginal Costs, Fixed Costs, Overall, Assumptions, Model Params
-tab_names = ["Intro"] + programme_tab_names + ["Marginal Costs", "Fixed Costs", "Overall", "Assumptions", "Model Parameters"]
+# New order: Intro, Programmes, Marginal Costs, Overall, Assumptions, Model Params
+tab_names = ["Intro"] + programme_tab_names + ["Marginal Costs", "Overall", "Assumptions", "Model Parameters"]
 
 all_tabs = st.tabs(tab_names)
 
@@ -45,10 +45,9 @@ programme_st_tabs = all_tabs[1 : 1 + len(programme_tab_names)]
 # Calculate the starting index for tabs after programme_st_tabs
 next_tab_index = 1 + len(programme_tab_names)
 marginal_costs_tab_ui = all_tabs[next_tab_index]
-fixed_costs_tab_ui = all_tabs[next_tab_index + 1]
-overall_tab_ui = all_tabs[next_tab_index + 2]
-assumptions_tab_ui = all_tabs[next_tab_index + 3]
-model_params_tab_ui = all_tabs[next_tab_index + 4] # Adjusted index to account for new tab
+overall_tab_ui = all_tabs[next_tab_index + 1]
+assumptions_tab_ui = all_tabs[next_tab_index + 2]
+model_params_tab_ui = all_tabs[next_tab_index + 3]
 
 offering_results = {}
 
@@ -87,9 +86,6 @@ for i, tab_name in enumerate(programme_tab_names):
 with marginal_costs_tab_ui:
     calculated_cost_per_session = display_cost_per_session_tab()
 
-# --- Render Fixed Costs Tab ---
-with fixed_costs_tab_ui:
-    display_fixed_costs_tab()
 
 # --- Render Assumptions Tab ---
 with assumptions_tab_ui:
