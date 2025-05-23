@@ -42,7 +42,7 @@ DEFAULT_AVG_SESSIONS_FOR_DROPOUTS = 2.0
 DEFAULT_TIMEFRAME_OF_INTEREST_MONTHS = 12.0
 
 # Constants for overall cost explanation
-ORGANISATION_FIXED_COSTS = 93000 # Fixed R&D Budget in USD
+ORGANISATION_FIXED_COSTS = 100000 # Fixed R&D Budget in USD
 
 # Default values for cost per session calculations
 DEFAULT_COACHES_PER_COHORT = 15
