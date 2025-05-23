@@ -5,7 +5,6 @@ import plotly.express as px
 from config import ORGANISATION_FIXED_COSTS, DEFAULT_COACHES_PER_COHORT, DEFAULT_CLIENTS_PER_COACH # Import the R&D budget and operational defaults
 
 def display_overall_comparison_tab(results_data):
-    st.header("Programme Comparison: Key Metrics")
     
     # Add controls for branches and client distribution
     st.subheader("Scale and Distribution")
@@ -52,9 +51,9 @@ def display_overall_comparison_tab(results_data):
     
     with col1:
         st.markdown("**Adjust the proportion of clients in each programme:**")
-        bespoke_pct = st.slider("Bespoke Offering (%)", 0, 100, 40, 5)
-        procrastination_pct = st.slider("Procrastination (%)", 0, 100, 35, 5)
-        insomnia_pct = st.slider("Insomnia (%)", 0, 100, 25, 5)
+        bespoke_pct = st.slider("Bespoke Offering (%)", 0, 100, 60, 5)
+        procrastination_pct = st.slider("Procrastination (%)", 0, 100, 20, 5)
+        insomnia_pct = st.slider("Insomnia (%)", 0, 100, 20, 5)
         
         # Normalize to 100%
         total_pct = bespoke_pct + procrastination_pct + insomnia_pct
