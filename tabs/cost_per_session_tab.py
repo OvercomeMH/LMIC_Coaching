@@ -13,8 +13,8 @@ from config import (
 )
 
 def display_cost_per_session_tab():
-    st.header("Cost Per Session Calculator")
-    st.markdown("Calculate the cost per coaching session based on staffing and operational parameters.")
+    st.header("Marginal Costs Calculator")
+    st.markdown("Calculate the marginal costs per coaching session for a single branch based on staffing and operational parameters.")
     
     # Create two columns for better layout
     col1, col2 = st.columns(2)
@@ -180,15 +180,34 @@ def display_cost_per_session_tab():
     # Additional breakdown
     st.subheader("Summary")
     
-    summary_col1, summary_col2 = st.columns(2)
+    # Calculate capacity metrics for a single branch
+    monthly_client_capacity = total_clients_per_cohort  # One cohort per month
+    yearly_client_capacity = monthly_client_capacity * 12  # 12 cohorts per year
+    
+    # Create metrics layout
+    summary_col1, summary_col2, summary_col3, summary_col4 = st.columns(4)
     
     with summary_col1:
+        st.metric(
+            label="Monthly Client Capacity", 
+            value=f"{monthly_client_capacity:,} clients",
+            help="Clients served per month (one cohort per month)"
+        )
+    
+    with summary_col2:
+        st.metric(
+            label="Yearly Client Capacity", 
+            value=f"{yearly_client_capacity:,} clients",
+            help="Total clients served per year (12 cohorts)"
+        )
+    
+    with summary_col3:
         st.metric(
             label="Total Sessions per Cohort", 
             value=f"{total_sessions_per_cohort:,}"
         )
     
-    with summary_col2:
+    with summary_col4:
         st.metric(
             label="Total Monthly Costs", 
             value=f"${total_monthly_salaries:,.2f}"

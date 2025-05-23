@@ -34,8 +34,8 @@ st.title('CEA: Coaching LMIC natives')
 
 # Define tab names and create tabs
 programme_tab_names = list(offerings.keys())
-# New order: Intro, Programmes, Overall, Cost Per Session, Fixed Costs, Assumptions, Model Params
-tab_names = ["Intro"] + programme_tab_names + ["Overall", "Cost Per Session", "Fixed Costs", "Assumptions", "Model Parameters"]
+# New order: Intro, Programmes, Marginal Costs, Fixed Costs, Overall, Assumptions, Model Params
+tab_names = ["Intro"] + programme_tab_names + ["Marginal Costs", "Fixed Costs", "Overall", "Assumptions", "Model Parameters"]
 
 all_tabs = st.tabs(tab_names)
 
@@ -44,9 +44,9 @@ intro_tab_ui = all_tabs[0]
 programme_st_tabs = all_tabs[1 : 1 + len(programme_tab_names)]
 # Calculate the starting index for tabs after programme_st_tabs
 next_tab_index = 1 + len(programme_tab_names)
-overall_tab_ui = all_tabs[next_tab_index]
-cost_per_session_tab_ui = all_tabs[next_tab_index + 1]
-fixed_costs_tab_ui = all_tabs[next_tab_index + 2]
+marginal_costs_tab_ui = all_tabs[next_tab_index]
+fixed_costs_tab_ui = all_tabs[next_tab_index + 1]
+overall_tab_ui = all_tabs[next_tab_index + 2]
 assumptions_tab_ui = all_tabs[next_tab_index + 3]
 model_params_tab_ui = all_tabs[next_tab_index + 4] # Adjusted index to account for new tab
 
@@ -83,8 +83,8 @@ for i, tab_name in enumerate(programme_tab_names):
             avg_sessions_dropouts_input
         )
 
-# --- Render Cost Per Session Tab ---
-with cost_per_session_tab_ui:
+# --- Render Marginal Costs Tab ---
+with marginal_costs_tab_ui:
     calculated_cost_per_session = display_cost_per_session_tab()
 
 # --- Render Fixed Costs Tab ---

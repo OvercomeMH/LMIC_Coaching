@@ -13,7 +13,7 @@ offerings = {
         "default_decay_model": "Exponential Decay"
     },
     "Procrastination": {
-        "retention": 70.0,
+        "retention": 50.0,
         "num_participants": 300,
         "sessions_per_participant": 4,
         "default_effect_duration": 4.0,
@@ -87,8 +87,6 @@ after six sessions, our average client gains 2.3 points on a 0-10 scale, going f
 Almost nobody has ever studied chronic insomnia's affect on wellbeing in LMICs. Your guess is as good as mine.
 """,
     "Procrastination": """
-Chronic procrastination is associated with significant stress, guilt, and reduced life satisfaction. Successful intervention can reduce these negative emotions and increase sense of control and accomplishment.
-
-Given that procrastination interventions address both productivity and emotional wellbeing, our best estimate is a 1.5 point improvement on the happiness scale.
+Our procrastination RCT had 44 LMIC participants. We retained 90% of them. The difference between the control and intervention group was 1.8 points on Cantril's ladder at post, and that difference held up at the one-month follow up.
 """
 }

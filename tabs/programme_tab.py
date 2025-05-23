@@ -138,10 +138,6 @@ def display_programme_tab(
     else:
         st.caption("Our average EA completion rate is ~60%. Both RCTs retrained >80% of users. We're estimating for 75%, adjusted upwards because we think the RCT would have retained more users if they had known the results for those who completed, and we'll be advertising those results hard.")
     
-    num_participants = st.slider(
-        'Participants', min_value=10, max_value=1000, value=tab_defaults["num_participants"], step=1, key=f"num_participants_{tab_name}"
-    )
-    
     # MOVED TO LAST: Proportion of harm borne by affected individual
     # Create condition-specific text for each tab
     if tab_name == "Bespoke Offering":
@@ -157,15 +153,23 @@ def display_programme_tab(
         slider_text = "What percentage of the harm from each case of depression / anxiety is bore by the affected person? (%)"
         caption_condition = "depression / anxiety"
     
+    # Set default harm proportion based on programme type
+    if tab_name == "Procrastination":
+        default_harm_proportion = 50  # 50/50 split for procrastination
+    else:
+        default_harm_proportion = 75  # 75% for other programmes
+    
     harm_proportion = st.slider(
         slider_text,
-        min_value=1, max_value=100, value=75, step=1, key=f"harm_proportion_{tab_name}",
+        min_value=1, max_value=100, value=default_harm_proportion, step=1, key=f"harm_proportion_{tab_name}",
         help="Consider the direct impact on the person's wellbeing, work performance, and relationships. This accounts for how much of the total harm (including effects on friends, family, and community) is experienced by the individual themselves."
     ) / 100.0
     st.caption(f"This means {harm_proportion:.0%} of the total harm from {caption_condition} affects the individual directly, while {(1-harm_proportion):.0%} affects their broader network (friends, family, colleagues, community).")
     
     sessions_per_participant = tab_defaults["sessions_per_participant"]
     
+    # Use default number of participants for calculations (will be overridden by overall tab)
+    num_participants = tab_defaults["num_participants"]
     total_EAs = num_participants
     overall_retention_rate = retention_rate
     total_retained_EAs = total_EAs * overall_retention_rate
@@ -200,43 +204,34 @@ def display_programme_tab(
 
     # Calculate metrics for display
     net_wellbys_per_retained_client = (net_wellbys_gained / total_retained_EAs) if total_retained_EAs > 0 else 0
-    cost_per_retained_client = (total_cost / total_retained_EAs) if total_retained_EAs > 0 else np.nan
+    gross_wellbys_per_retained_client = (gross_wellbys_from_retained / total_retained_EAs) if total_retained_EAs > 0 else 0
+    societal_wellbys_per_retained_client = net_wellbys_per_retained_client - gross_wellbys_per_retained_client
 
+    # Display the breakdown of WELLBYs per retained client
     st.subheader("Programme Outcomes")
-    row1_col1, row1_col2, row1_col3 = st.columns(3)
-    with row1_col1:
+    
+    # Create three columns for the metrics
+    outcome_col1, outcome_col2, outcome_col3 = st.columns(3)
+    
+    with outcome_col1:
         st.metric(
-            label="Marginal Cost",
-            value=f"${total_cost:,.0f}"
-        )
-    with row1_col2:
-        st.metric(
-            label="WELLBYs Generated",
-            value=f"{net_wellbys_gained:,.1f}"
-        )
-    with row1_col3:
-        cost_display_overall = f"${cost_per_wellby:,.0f}" if not np.isnan(cost_per_wellby) else "N/A"
-        st.metric(
-            label="Cost per WELLBY",
-            value=cost_display_overall
+            label="WELLBYs per Retained Client (Client)",
+            value=f"{gross_wellbys_per_retained_client:,.3f}",
+            help="Direct wellbeing benefit experienced by each person who completes the programme"
         )
     
-    row2_col1, row2_col2, row2_col3 = st.columns(3)
-    with row2_col1:
+    with outcome_col2:
         st.metric(
-            label="Clients Retained",
-            value=f"{total_retained_EAs:,.0f}"
+            label="WELLBYs per Retained Client (Society)",
+            value=f"{societal_wellbys_per_retained_client:,.3f}",
+            help="Additional wellbeing benefit to family, friends, colleagues, and community per person who completes the programme"
         )
-    with row2_col2:
-        cost_per_retained_display = f"${cost_per_retained_client:,.0f}" if not np.isnan(cost_per_retained_client) else "N/A"
+    
+    with outcome_col3:
         st.metric(
-            label="Marginal Cost / Retained Client",
-            value=cost_per_retained_display
-        )
-    with row2_col3:
-        st.metric(
-            label="WELLBYs / Retained Client",
-            value=f"{net_wellbys_per_retained_client:,.2f}"
+            label="Total WELLBYs per Retained Client",
+            value=f"{net_wellbys_per_retained_client:,.3f}",
+            help="Combined wellbeing benefit including both individual and societal impact per person who completes the programme"
         )
 
     return {

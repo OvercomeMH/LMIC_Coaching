@@ -25,7 +25,7 @@ def display_fixed_costs_tab():
         },
         {
             "name": "Me (Founder)",
-            "salary": "$0 to $18,000",
+            "salary": "$18,000 (optional)",
             "role": "I'm responsible for impact-oriented client demographics (e.g. founders, key people within animal welfare), special projects, organisational strategy, fundraising, B2B sales, hiring, firing, and accounting. I work on this ~70 hours per week ~49 weeks a year. (Happy to keep volunteering if needs be)"
         },
         {
@@ -56,34 +56,16 @@ def display_fixed_costs_tab():
     min_total = 39000 + 36000 + 6000 + 0 + 12000  # $93k if founder takes $0
     max_total = 39000 + 36000 + 6000 + 18000 + 12000  # $111k if founder takes $18k
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     
     with col1:
         st.metric(
-            label="Minimum Annual Fixed Costs", 
-            value=f"${min_total:,}",
-            help="If founder continues volunteering"
+            label="If I don't take salary", 
+            value=f"${min_total:,}"
         )
     
     with col2:
         st.metric(
-            label="Maximum Annual Fixed Costs", 
-            value=f"${max_total:,}",
-            help="If founder takes full salary"
-        )
-    
-    with col3:
-        st.metric(
-            label="Average Annual Fixed Costs", 
-            value=f"${(min_total + max_total) // 2:,}",
-            help="Midpoint estimate"
-        )
-    
-    st.markdown("""
-    ---
-    **About these fixed costs:**
-    - These team members support all programmes, not just EA-specific work
-    - Costs are essential for maintaining quality, conducting research, and scaling operations
-    - The team enables standardized training, safeguarding, RCTs, and organizational development
-    - Fixed costs are independent of the number of EA participants served
-    """) 
+            label="If I take salary", 
+            value=f"${max_total:,}"
+        ) 
