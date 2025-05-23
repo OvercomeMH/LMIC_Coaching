@@ -100,7 +100,7 @@ def display_decay_visualisation(decay_model, annual_decay_rate_input, months_to_
 
     return custom_curve_weekly_points
 
-# --- Function to calculate total WELLBYs per EA --- 
+# --- Function to calculate total WELLBYs per client --- 
 def calculate_total_wellbys_per_ea(
     initial_weekly_wellbeing_gain_per_ea,
     decay_model,
@@ -111,7 +111,7 @@ def calculate_total_wellbys_per_ea(
     custom_weekly_points=None
 ):
     """
-    Calculate total WELLBYs (Wellbeing-Adjusted Life Years) gained per EA over the timeframe.
+    Calculate total WELLBYs (Wellbeing-Adjusted Life Years) gained per client over the timeframe.
     
     Args:
         initial_weekly_wellbeing_gain_per_ea: Weekly wellbeing gain at peak effectiveness (in wellbeing points)

@@ -2,7 +2,7 @@ import streamlit as st
 
 def display_fixed_costs_tab():
     st.header("Fixed Costs: Team & Operations")
-    st.markdown("Our fixed costs cover the core team that makes all programmes possible, regardless of EA participation.")
+    st.markdown("Our fixed costs cover the core team that makes all programmes possible, regardless of client participation.")
     
     # Team Members section
     st.subheader("Core Team")

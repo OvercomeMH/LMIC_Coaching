@@ -194,21 +194,21 @@ def display_overall_comparison_tab(results_data):
         if total_clients > 0:
             # Allocate fixed costs proportionally to clients seen
             programmes_only_df['Allocated Fixed Costs'] = programmes_only_df['Clients Seen'] * (ORGANISATION_FIXED_COSTS / total_clients)
-            programmes_only_df['Total Programme Cost'] = programmes_only_df['Marginal Programme Cost'] + programmes_only_df['Allocated Fixed Costs']
-            programmes_only_df['Total Cost per WELLBY'] = programmes_only_df['Total Programme Cost'] / programmes_only_df['WELLBYs Generated']
+            programmes_only_df['Total Cost'] = programmes_only_df['Marginal Programme Cost'] + programmes_only_df['Allocated Fixed Costs']
+            programmes_only_df['Total Cost per WELLBY'] = programmes_only_df['Total Cost'] / programmes_only_df['WELLBYs Generated']
             
             # Calculate new summary row
             fixed_summary_data = {
                 'Marginal Programme Cost': programmes_only_df['Marginal Programme Cost'].sum(),
                 'Allocated Fixed Costs': programmes_only_df['Allocated Fixed Costs'].sum(),
-                'Total Programme Cost': programmes_only_df['Total Programme Cost'].sum(),
+                'Total Cost': programmes_only_df['Total Cost'].sum(),
                 'WELLBYs Generated': programmes_only_df['WELLBYs Generated'].sum(),
                 'Clients Seen': programmes_only_df['Clients Seen'].sum(),
                 'Clients Retained': programmes_only_df['Clients Retained'].sum()
             }
             
             # Calculate overall total cost per WELLBY
-            fixed_summary_data['Total Cost per WELLBY'] = (fixed_summary_data['Total Programme Cost'] / 
+            fixed_summary_data['Total Cost per WELLBY'] = (fixed_summary_data['Total Cost'] / 
                                                          fixed_summary_data['WELLBYs Generated']) if fixed_summary_data['WELLBYs Generated'] > 0 else np.nan
             
             # Add summary row
@@ -220,7 +220,7 @@ def display_overall_comparison_tab(results_data):
             fixed_cost_columns = [
                 'Marginal Programme Cost',
                 'Allocated Fixed Costs', 
-                'Total Programme Cost',
+                'Total Cost',
                 'WELLBYs Generated',
                 'Clients Seen',
                 'Clients Retained',
@@ -234,7 +234,7 @@ def display_overall_comparison_tab(results_data):
             fixed_formats = {
                 'Marginal Programme Cost': '${:,.0f}',
                 'Allocated Fixed Costs': '${:,.0f}',
-                'Total Programme Cost': '${:,.0f}',
+                'Total Cost': '${:,.0f}',
                 'WELLBYs Generated': '{:,.2f}',
                 'Clients Seen': '{:,.0f}',
                 'Clients Retained': '{:,.0f}',

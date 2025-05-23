@@ -46,8 +46,7 @@ def display_programme_tab(
         """)
     elif tab_name == "Procrastination":
         st.markdown("""
-        **Evidence Base:** Very little research exists on the long-term durability of procrastination interventions. 
-        We suspect that wellbeing benefits will decay sharply without additional intervention, which is why we provide a free GoalsWon referral to help prevent relapse.
+        **Evidence Base:** The only paper I could find which looked at how well a procrastination interventions wellbeing improvement held up showed that X% were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
         """)
     
     decay_model = st.selectbox(
@@ -132,9 +131,9 @@ def display_programme_tab(
     ) / 100
     # Add explanation and 65% statistic next to retention rate for Bespoke Offering
     if tab_name == "Bespoke Offering":
-        st.caption("On average, 65% of EAs who do one session will go on to do at least six sessions. Retention rate here means the probability that a participant will complete every session in the programme, given that they attended the first session.")
+        st.caption("On average, 65% of clients who do one session will go on to do at least six sessions. Retention rate here means the probability that a participant will complete every session in the programme, given that they attended the first session.")
     elif tab_name in ["Insomnia", "Procrastination"]:
-        st.caption("Our average EA completion rate is ~60%. Both RCTs retrained >80% of users. We're estimating 70%.")
+        st.caption("Our average retention rate (lower bound) is 40%. Both RCTs retained >80% of clients (and 90% of those from LMICs). We're estimating 50% here.")
     else:
         st.caption("Our average EA completion rate is ~60%. Both RCTs retrained >80% of users. We're estimating for 75%, adjusted upwards because we think the RCT would have retained more users if they had known the results for those who completed, and we'll be advertising those results hard.")
     
@@ -177,7 +176,7 @@ def display_programme_tab(
     # Calculate initial weekly wellbeing gain (in wellbeing points per week)
     initial_weekly_wellbeing_gain_per_ea = wellbeing_gain  # The gain is continuous, not just during work hours
 
-    # This calculates GROSS WELLBYs gained per EA over the period, before accounting for time spent on intervention
+    # This calculates GROSS WELLBYs gained per client over the period, before accounting for time spent on intervention
     gross_wellbys_per_ea_who_completes = calculate_total_wellbys_per_ea(
         initial_weekly_wellbeing_gain_per_ea=initial_weekly_wellbeing_gain_per_ea,
         decay_model=decay_model,
@@ -188,7 +187,7 @@ def display_programme_tab(
         custom_weekly_points=weekly_points_for_calc
     )
 
-    # Total gross WELLBYs from all EAs who are retained
+    # Total gross WELLBYs from all clients who are retained
     gross_wellbys_from_retained = gross_wellbys_per_ea_who_completes * total_retained_EAs
     
     # Simplified calculation - no time opportunity costs or disappointment

@@ -1,8 +1,8 @@
-# Configuration data for the CEA Coaching EAs Streamlit app
+# Configuration data for the CEA Coaching Streamlit app
 
 offerings = {
     "Bespoke Offering": {
-        "retention": 60.0,
+        "retention": 40.0,
         "num_participants": 400,
         "sessions_per_participant": 6,
         "default_effect_duration": 6.0,  # months
@@ -72,7 +72,7 @@ programme_introductions = {
     "Procrastination": '''
         This four session programme helps people who're in the top 20% of procrastinators relative to the general population.
 
-        Very little research exists on the long-term durability of procrastination interventions. We suspect that it will decay sharply without additional intervention. To help prevent relapse, completers will get a free referral link to [GoalsWon, a daily accountability service](https://www.goalswon.com/giving-back) (free for EAs). We think this is likely to dramatically reduce the likelihood of relapse. Their CEO reached out to me asking for more EA clients, so it's a win-win at no cost to you / us / users.
+        The only paper I could find which looked at how well a procrastination interventions wellbeing improvement held up showed that X% were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
         
         Expected wellbeing gain: **1.5 points** on the 0-10 happiness scale.
     '''

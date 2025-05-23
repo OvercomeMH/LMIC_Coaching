@@ -62,7 +62,7 @@ with intro_tab_ui:
     
     **You should know**
     - We'll be continously updating this model to reflect our current best understanding, largely for our own benefit.
-    - WELLBYs (Wellbeing-Adjusted Life Years) measure happiness gains over time. For example, making someone 0.5 points happier for 2 years = 1 WELLBY. Same if making someone 2 points happier for 6 months.
+
     """)
 
 # --- Render Model Parameters Tab ---
