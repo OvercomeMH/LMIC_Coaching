@@ -46,7 +46,7 @@ def display_programme_tab(
         """)
     elif tab_name == "Procrastination":
         st.markdown("""
-        **Evidence Base:** The only paper I could find which looked at how well a procrastination interventions wellbeing improvement held up showed that X% were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
+        **Evidence Base:** The only paper I could find that looked at how well a procrastination intervention's wellbeing improvement held up showed that 90% of benefits were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
         """)
     
     decay_model = st.selectbox(

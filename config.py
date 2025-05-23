@@ -67,14 +67,13 @@ programme_introductions = {
         - This programme is designed for people struggling with moderate to severe insomnia.
         - The intervention is based on cognitive behavioral therapy for insomnia (CBT-I), the gold standard treatment.
         - Participants typically experience significant wellbeing improvements due to better sleep quality.
-        - Expected wellbeing gain: **1.7 points** on the 0-10 happiness scale.
+
     ''',
     "Procrastination": '''
         This four session programme helps people who're in the top 20% of procrastinators relative to the general population.
 
-        The only paper I could find which looked at how well a procrastination interventions wellbeing improvement held up showed that X% were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
-        
-        Expected wellbeing gain: **1.5 points** on the 0-10 happiness scale.
+        The only paper I could find that looked at how well a procrastination intervention's wellbeing improvement held up showed that 90% of benefits were retained 12 months later, but we're doubtful that finding would replicate. We think a decay curve like this is more realistic.
+
     '''
 }
 
